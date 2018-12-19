@@ -5,7 +5,7 @@
 class MenuDisplay : public wxPanel
 {
 public:
-	MenuDisplay(MenuFrame* parent);
+	MenuDisplay(MenuFrame *parent);
 	~MenuDisplay();
 
 	void StartGame(wxCommandEvent &event);

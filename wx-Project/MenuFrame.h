@@ -12,7 +12,7 @@ private:
 	wxBoxSizer* boxSizer;
 	MenuDisplay* MainMenuPanel;
 	MenuWindow* StartGamePanel;
-
+	bool flag = false;
 	void fitWindowSize();
 	
 public:

@@ -17,21 +17,12 @@ void Obstacle::Draw(wxPaintDC & pdc)
 		pdc.DrawBitmap(*Obstacle_bitmap, wxPoint(POSISI_X, POSISI_Y), true);
 }
 
-//void Obstacle::LoadObstacle()
-//{
-//	wxStandardPaths &stdPath = wxStandardPaths::Get();
-//	wxString filelocation = stdPath.GetExecutablePath();
-//	filelocation = wxFileName(filelocation).GetPath() + wxT("\\cactusBig0000.png");
-//	wxImage Obstacle_Image(filelocation, wxBITMAP_TYPE_PNG);
-//	Obstacle_bitmap = new wxBitmap(Obstacle_Image);
-//}
-
 void Obstacle::Move()
 {
 	wxStandardPaths &stdPath = wxStandardPaths::Get();
 	wxString filelocation = stdPath.GetExecutablePath();
 
-	if(POSISI_X > 0) POSISI_X -= 10;
+	if(POSISI_X > -130) POSISI_X -= 20;
 	else {
 		POSISI_X = OBSTACLE_X;
 		ChooseObstacle = rand() % 3;
@@ -41,30 +32,39 @@ void Obstacle::Move()
 	switch (ChooseObstacle) {
 		case KAKTUS_BESAR: {
 			filelocation = wxFileName(filelocation).GetPath() + wxT("\\cactusBig0000.png");
-			wxImage Obstacle_Image(filelocation, wxBITMAP_TYPE_PNG);
-			Obstacle_bitmap = new wxBitmap(Obstacle_Image);
-			//ChooseObstacle = rand() % 3;
 			POSISI_Y = OBSTACLE_Y;
 		}break;
 		case KAKTUS_KECIL: {
 			filelocation = wxFileName(filelocation).GetPath() + wxT("\\cactusSmall0000.png");
-			wxImage Obstacle_Image(filelocation, wxBITMAP_TYPE_PNG);
-			Obstacle_bitmap = new wxBitmap(Obstacle_Image);
-			//ChooseObstacle = rand() % 3;
 			POSISI_Y = OBSTACLE_Y + 40;
 		}break;
 		case KAKTUS_BANYAK: {
 			filelocation = wxFileName(filelocation).GetPath() + wxT("\\cactusSmallMany0000.png");
-			wxImage Obstacle_Image(filelocation, wxBITMAP_TYPE_PNG);
-			Obstacle_bitmap = new wxBitmap(Obstacle_Image);
 			POSISI_Y = OBSTACLE_Y + 40;
-			//ChooseObstacle = rand() % 3;
 		}break;
 	}
+
+	wxImage Obstacle_Image(filelocation, wxBITMAP_TYPE_PNG);
+	Obstacle_bitmap = new wxBitmap(Obstacle_Image);
 	wxMessageOutputDebug().Printf("Ukuran gambar: %d | %d", Obstacle_bitmap->GetHeight(), Obstacle_bitmap->GetWidth());
 }
 
-void Obstacle::addObstacle()
+int Obstacle::getPOSISI_X()
 {
+	return POSISI_X;
+}
 
+int Obstacle::getPOSISI_Y()
+{
+	return POSISI_Y;
+}
+
+int Obstacle::getDinoWidth()
+{
+	return Obstacle_bitmap->GetWidth();
+}
+
+int Obstacle::getDinoHeight()
+{
+	return Obstacle_bitmap->GetHeight();
 }

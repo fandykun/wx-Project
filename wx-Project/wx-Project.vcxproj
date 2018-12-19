@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cloud.h" />
     <ClInclude Include="deklarasi.h" />
     <ClInclude Include="MenuDisplay.h" />
     <ClInclude Include="MenuFrame.h" />
@@ -27,6 +28,7 @@
     <ClInclude Include="Obstacle.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cloud.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuDisplay.cpp" />
     <ClCompile Include="MenuFrame.cpp" />

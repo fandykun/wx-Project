@@ -8,6 +8,10 @@ public:
 	~ObjectDino();
 	void Draw(wxPaintDC &pdc);
 	void Move();
+	int getDinoWidth();
+	int getDinoHeight();
+	int getPOSISI_X();
+	int getPOSISI_Y();
 	int pergerakan = 1;
 private:
 	wxBitmap *Dino_bitmap = nullptr;

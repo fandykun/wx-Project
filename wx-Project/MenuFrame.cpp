@@ -8,9 +8,9 @@ MenuFrame::MenuFrame(const wxString & title)
 	//this->SetInitialSize(wxSize(UKURAN_X, UKURAN_Y));
 	boxSizer = new wxBoxSizer(wxVERTICAL);
 	
-	this->StartGamePanel = new MenuWindow(this);
-	this->StartGamePanel->Show(false);
-	this->boxSizer->Add(StartGamePanel, 1, wxEXPAND, 0);
+	/*this->StartGamePanel = new MenuWindow(this);*/
+	/*this->StartGamePanel->Show(false);*/
+	/*this->boxSizer->Add(StartGamePanel, 1, wxEXPAND, 0);*/
 
 	this->MainMenuPanel = new MenuDisplay(this);
 	this->MainMenuPanel->Show(false);
@@ -32,16 +32,24 @@ void MenuFrame::fitWindowSize()
 
 void MenuFrame::showMainMenu()
 {
+
 	this->MainMenuPanel->Show(true);
-	this->StartGamePanel->Show(false);
-	
+	this->MainMenuPanel->SetFocus();
+	//this->StartGamePanel->Show(false);
+	flag = false;
 	fitWindowSize();
 }
 
 void MenuFrame::showStartGame()
-{
-	this->MainMenuPanel->Show(false);
-	this->StartGamePanel->Show(true);
-
-	fitWindowSize();
+{	
+	if (!flag) {
+		this->StartGamePanel = new MenuWindow(this);
+		this->StartGamePanel->SetFocus();
+		this->MainMenuPanel->Show(false);
+		this->StartGamePanel->Show(true);
+		this->boxSizer->Add(StartGamePanel, 1, wxEXPAND, 0);
+		fitWindowSize();
+		flag = true;
+	}
+	
 }
